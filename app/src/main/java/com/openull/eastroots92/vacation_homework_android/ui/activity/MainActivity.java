@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     Log.e("#1", "onCreate");
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    homeworkApis = ApiUtils.getHomeworkApis();
-
+    
     tempRequest();
   }
 
