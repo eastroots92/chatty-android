@@ -1,6 +1,7 @@
 package com.openull.eastroots92.vacation_homework_android.ui.Activity;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.apis.HomeworkApis;
 import com.openull.eastroots92.vacation_homework_android.presenter.Main.GreenContract;
 import com.openull.eastroots92.vacation_homework_android.presenter.Main.MainContract;
+import com.openull.eastroots92.vacation_homework_android.ui.Adapter.ViewPagerAdapter;
 import com.openull.eastroots92.vacation_homework_android.ui.Fragment.BlueFragment;
 import com.openull.eastroots92.vacation_homework_android.ui.Fragment.GreenFragment;
 import com.openull.eastroots92.vacation_homework_android.ui.Fragment.RedFragment;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
   private MainContract.Presenter presenter;
   private HomeworkApis homeworkApis;
+
+  private ViewPager viewPager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,32 +47,33 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     findViewById(R.id.view_green).setOnClickListener(this);
     findViewById(R.id.view_blue).setOnClickListener(this);
 
-    initFragment();
+
+    initViewPager();
   }
 
-  private void initFragment() {
-    getSupportFragmentManager().beginTransaction()
-      .add(R.id.frameLayout_fragmentView, redFragment)
-      .commit();
+  private void initViewPager() {
+    viewPager = findViewById(R.id.viewPager_fragmentView);
+
+    Fragment[] arrayFragments = new Fragment[3];
+    arrayFragments[0] = redFragment;
+    arrayFragments[1] = greenFragment;
+    arrayFragments[2] = blueFragment;
+
+    viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), arrayFragments));
   }
 
-  private void setFragment(Fragment fragment) {
-    getSupportFragmentManager().beginTransaction()
-      .replace(R.id.frameLayout_fragmentView, fragment)
-      .commit();
-  }
 
   @Override
   public void onClick(View view) {
     switch (view.getId()){
       case R.id.view_red:
-        setFragment(redFragment);
+        viewPager.setCurrentItem(0);
         break;
       case R.id.view_green:
-        setFragment(greenFragment);
+        viewPager.setCurrentItem(1);
         break;
       case R.id.view_blue:
-        setFragment(blueFragment);
+        viewPager.setCurrentItem(2);
         break;
 
     }
