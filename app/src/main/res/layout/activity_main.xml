@@ -9,34 +9,11 @@
   tools:context=".ui.Activity.MainActivity"
   >
 
-  <LinearLayout
+  <android.support.design.widget.TabLayout
+    android:id="@+id/tabLayout_tabs"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    >
-    <View
-      android:id="@+id/view_red"
-      android:background="#ff8174"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      />
-
-    <View
-      android:id="@+id/view_green"
-      android:background="#56c450"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      />
-
-    <View
-      android:id="@+id/view_blue"
-      android:background="#4c9afa"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      />
-  </LinearLayout>
+    />
 
   <android.support.v4.view.ViewPager
     android:id="@+id/viewPager_fragmentView"

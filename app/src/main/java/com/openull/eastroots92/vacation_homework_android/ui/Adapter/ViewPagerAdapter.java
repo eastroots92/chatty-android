@@ -23,4 +23,18 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
   public int getCount() {
     return arrayFragments.length;
   }
+
+  @Override
+  public CharSequence getPageTitle(int position) {
+    switch (position) {
+      case 0 :
+        return "RED";
+      case 1 :
+        return "GREEN";
+      case 2 :
+        return "BLUE";
+        default:
+          return "";
+    }
+  }
 }

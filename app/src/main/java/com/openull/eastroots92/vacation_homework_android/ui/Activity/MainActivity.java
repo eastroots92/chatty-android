@@ -1,5 +1,6 @@
 package com.openull.eastroots92.vacation_homework_android.ui.Activity;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,16 +18,14 @@ import com.openull.eastroots92.vacation_homework_android.ui.Fragment.BlueFragmen
 import com.openull.eastroots92.vacation_homework_android.ui.Fragment.GreenFragment;
 import com.openull.eastroots92.vacation_homework_android.ui.Fragment.RedFragment;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements MainContract.View {
 
   private RedFragment redFragment;
   private BlueFragment blueFragment;
   private GreenFragment greenFragment;
 
-  private MainContract.Presenter presenter;
-  private HomeworkApis homeworkApis;
-
   private ViewPager viewPager;
+  private TabLayout tabLayout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +42,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     blueFragment = new BlueFragment();
     greenFragment = new GreenFragment();
 
-    findViewById(R.id.view_red).setOnClickListener(this);
-    findViewById(R.id.view_green).setOnClickListener(this);
-    findViewById(R.id.view_blue).setOnClickListener(this);
-
-
     initViewPager();
+    initTabLayout();
+  }
+
+  private void initTabLayout() {
+    tabLayout = findViewById(R.id.tabLayout_tabs);
+
+    tabLayout.setupWithViewPager(viewPager);
   }
 
   private void initViewPager() {
@@ -62,21 +63,4 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), arrayFragments));
   }
 
-
-  @Override
-  public void onClick(View view) {
-    switch (view.getId()){
-      case R.id.view_red:
-        viewPager.setCurrentItem(0);
-        break;
-      case R.id.view_green:
-        viewPager.setCurrentItem(1);
-        break;
-      case R.id.view_blue:
-        viewPager.setCurrentItem(2);
-        break;
-
-    }
-
-  }
 }
