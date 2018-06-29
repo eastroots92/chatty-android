@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.ui.presenter;
+package com.openull.eastroots92.vacation_homework_android.presenter;
 
 public interface MainContract {
     interface View{
