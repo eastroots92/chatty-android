@@ -7,7 +7,6 @@ import android.util.Log;
 import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.apis.HomeworkApis;
 import com.openull.eastroots92.vacation_homework_android.models.response.TempResponse;
-import com.openull.eastroots92.vacation_homework_android.modules.RetrofitClient;
 import com.openull.eastroots92.vacation_homework_android.presenter.MainContract;
 import com.openull.eastroots92.vacation_homework_android.utils.ApiUtils;
 
@@ -40,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     Log.e("#1", "tempRequest");
     homeworkApis = ApiUtils.getHomeworkApis();
 
-    homeworkApis.getTemp().enqueue(new Callback<TempResponse>() {
+    homeworkApis.getTemp()
+      .enqueue(new Callback<TempResponse>() {
       @Override
       public void onResponse(Call<TempResponse> call, Response<TempResponse> response) {
         Log.e("#1", "onResponse");
