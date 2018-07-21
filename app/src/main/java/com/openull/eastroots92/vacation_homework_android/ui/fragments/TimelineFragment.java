@@ -24,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TimelineFragment extends Fragment {
-  TimelineFragmentPresenter presenter;
+  private TimelineFragmentPresenter presenter;
 
   @BindView(R.id.recyclerView_timeline)
   public RecyclerView recyclerView;

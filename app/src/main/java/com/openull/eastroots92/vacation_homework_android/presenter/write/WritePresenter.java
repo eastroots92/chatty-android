@@ -19,13 +19,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WritePresenter {
-  final String FALSE= "FALSE";
-  final String IS_INITIALIZED = "IS_INITIALIZED";
-  final String TRUE = "TRUE";
+  private static final String FALSE= "FALSE";
+  private static final String IS_INITIALIZED = "IS_INITIALIZED";
+  private static final String TRUE = "TRUE";
 
   private WriteActivity view;
-  HomeworkApis homeworkApis;
-  Map<String, String> state;
+  private HomeworkApis homeworkApis;
+  private Map<String, String> state;
 
   public WritePresenter(WriteActivity v) {
     this.view = v;

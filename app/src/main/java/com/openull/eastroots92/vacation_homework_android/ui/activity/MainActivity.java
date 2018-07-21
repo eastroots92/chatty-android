@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
 
   @BindView(R.id.floatingActionButton_write)
-  FloatingActionButton writeButton;
+  public FloatingActionButton writeButton;
 
   @BindView(R.id.frameLayout_main)
-  ViewPager mainFrameLayout;
+  public ViewPager mainFrameLayout;
 
   @BindView(R.id.tabLayout_navBar)
-  TabLayout tabLayout;
+  public TabLayout tabLayout;
 
   private MainFragmentAdapter mainFragmentAdapter;
 

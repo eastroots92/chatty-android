@@ -21,13 +21,13 @@ public class DiaryDetailActivity extends AppCompatActivity {
   private DiaryDetailPresenter presenter;
   
   @BindView(R.id.textView_name)
-  TextView name;
+  public TextView name;
 
   @BindView(R.id.textView_date)
-  TextView date;
+  public TextView date;
 
   @BindView(R.id.textView_weather)
-  TextView weather;
+  public TextView weather;
 
   @BindView(R.id.recyclerView_diary)
   RecyclerView recyclerView;
