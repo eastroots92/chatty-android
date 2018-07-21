@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.ui.activity;
+package com.openull.eastroots92.vacation_homework_android.ui.main;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -9,11 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.openull.eastroots92.vacation_homework_android.R;
-import com.openull.eastroots92.vacation_homework_android.presenter.main.MainPresenter;
-import com.openull.eastroots92.vacation_homework_android.ui.adapter.MainFragmentAdapter;
-import com.openull.eastroots92.vacation_homework_android.ui.fragments.CalendarFragment;
-import com.openull.eastroots92.vacation_homework_android.ui.fragments.SettingFragment;
-import com.openull.eastroots92.vacation_homework_android.ui.fragments.TimelineFragment;
+import com.openull.eastroots92.vacation_homework_android.ui.write.WriteActivity;
+import com.openull.eastroots92.vacation_homework_android.adapter.MainFragmentAdapter;
+import com.openull.eastroots92.vacation_homework_android.ui.main.fragment.calendar.CalendarFragment;
+import com.openull.eastroots92.vacation_homework_android.ui.main.fragment.setting.SettingFragment;
+import com.openull.eastroots92.vacation_homework_android.ui.main.fragment.timeLine.TimelineFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.ui.adapter;
+package com.openull.eastroots92.vacation_homework_android.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.ui.adapter;
+package com.openull.eastroots92.vacation_homework_android.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

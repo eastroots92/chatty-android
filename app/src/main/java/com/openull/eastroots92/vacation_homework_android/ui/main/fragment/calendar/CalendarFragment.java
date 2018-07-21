@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.ui.fragments;
+package com.openull.eastroots92.vacation_homework_android.ui.main.fragment.calendar;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.openull.eastroots92.vacation_homework_android.R;
-import com.openull.eastroots92.vacation_homework_android.presenter.calendarFragment.CalendarPresenter;
 
 import butterknife.ButterKnife;
 

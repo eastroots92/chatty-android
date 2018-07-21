@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
-  tools:context=".ui.activity.DiaryDetailActivity">
+  tools:context=".ui.diaryDetail.DiaryDetailActivity">
   <include
     android:id="@+id/item_header"
     layout="@layout/item_header"/>

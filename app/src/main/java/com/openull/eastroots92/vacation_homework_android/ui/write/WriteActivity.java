@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.ui.activity;
+package com.openull.eastroots92.vacation_homework_android.ui.write;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +9,7 @@ import android.widget.EditText;
 
 import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.model.ChatBalloon;
-import com.openull.eastroots92.vacation_homework_android.presenter.write.WritePresenter;
-import com.openull.eastroots92.vacation_homework_android.ui.adapter.DialogueAdapter;
+import com.openull.eastroots92.vacation_homework_android.adapter.DialogueAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

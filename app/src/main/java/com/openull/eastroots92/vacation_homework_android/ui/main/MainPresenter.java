@@ -1,6 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.presenter.main;
-
-import com.openull.eastroots92.vacation_homework_android.ui.activity.MainActivity;
+package com.openull.eastroots92.vacation_homework_android.ui.main;
 
 public class MainPresenter {
     private MainActivity view;

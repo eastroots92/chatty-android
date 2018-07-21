@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.presenter.write;
+package com.openull.eastroots92.vacation_homework_android.ui.write;
 
 import android.view.View;
 
@@ -6,7 +6,6 @@ import com.openull.eastroots92.vacation_homework_android.api.HomeworkApis;
 import com.openull.eastroots92.vacation_homework_android.model.ChatBalloon;
 import com.openull.eastroots92.vacation_homework_android.model.requests.ChatRequest;
 import com.openull.eastroots92.vacation_homework_android.model.responses.ChatResponse;
-import com.openull.eastroots92.vacation_homework_android.ui.activity.WriteActivity;
 import com.openull.eastroots92.vacation_homework_android.util.ApiUtils;
 
 import java.util.Calendar;

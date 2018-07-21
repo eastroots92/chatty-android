@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.ui.activity;
+package com.openull.eastroots92.vacation_homework_android.ui.diaryDetail;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +8,7 @@ import android.widget.TextView;
 
 import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.model.Diary;
-import com.openull.eastroots92.vacation_homework_android.presenter.detail.DiaryDetailPresenter;
-import com.openull.eastroots92.vacation_homework_android.ui.adapter.DiaryAdapter;
+import com.openull.eastroots92.vacation_homework_android.adapter.DiaryAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
