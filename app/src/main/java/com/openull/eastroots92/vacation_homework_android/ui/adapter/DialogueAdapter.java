@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.openull.eastroots92.vacation_homework_android.R;
-import com.openull.eastroots92.vacation_homework_android.models.ChatBalloon;
+import com.openull.eastroots92.vacation_homework_android.model.ChatBalloon;
 
 import java.util.List;
 

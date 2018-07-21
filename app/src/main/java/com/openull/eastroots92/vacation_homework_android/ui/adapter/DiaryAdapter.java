@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.openull.eastroots92.vacation_homework_android.R;
-import com.openull.eastroots92.vacation_homework_android.models.Diary;
+import com.openull.eastroots92.vacation_homework_android.model.Diary;
 
 import java.util.List;
 

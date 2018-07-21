@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.models.requests;
+package com.openull.eastroots92.vacation_homework_android.model.requests;
 
 public class ChatRequest {
   private String contents;

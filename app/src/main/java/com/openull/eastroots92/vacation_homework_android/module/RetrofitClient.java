@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.modules;
+package com.openull.eastroots92.vacation_homework_android.module;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

@@ -1,4 +1,4 @@
-package com.openull.eastroots92.vacation_homework_android.models;
+package com.openull.eastroots92.vacation_homework_android.model;
 
 import java.util.Calendar;
 

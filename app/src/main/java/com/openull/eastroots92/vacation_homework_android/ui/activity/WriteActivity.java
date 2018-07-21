@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.openull.eastroots92.vacation_homework_android.R;
-import com.openull.eastroots92.vacation_homework_android.models.ChatBalloon;
+import com.openull.eastroots92.vacation_homework_android.model.ChatBalloon;
 import com.openull.eastroots92.vacation_homework_android.presenter.write.WritePresenter;
 import com.openull.eastroots92.vacation_homework_android.ui.adapter.DialogueAdapter;
 

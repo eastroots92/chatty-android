@@ -1,7 +1,7 @@
-package com.openull.eastroots92.vacation_homework_android.apis;
+package com.openull.eastroots92.vacation_homework_android.api;
 
-import com.openull.eastroots92.vacation_homework_android.models.requests.ChatRequest;
-import com.openull.eastroots92.vacation_homework_android.models.responses.ChatResponse;
+import com.openull.eastroots92.vacation_homework_android.model.requests.ChatRequest;
+import com.openull.eastroots92.vacation_homework_android.model.responses.ChatResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

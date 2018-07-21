@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.openull.eastroots92.vacation_homework_android.R;
-import com.openull.eastroots92.vacation_homework_android.models.Diary;
+import com.openull.eastroots92.vacation_homework_android.model.Diary;
 import com.openull.eastroots92.vacation_homework_android.presenter.detail.DiaryDetailPresenter;
 import com.openull.eastroots92.vacation_homework_android.ui.adapter.DiaryAdapter;
 

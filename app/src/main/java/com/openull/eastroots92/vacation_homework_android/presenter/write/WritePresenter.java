@@ -2,17 +2,16 @@ package com.openull.eastroots92.vacation_homework_android.presenter.write;
 
 import android.view.View;
 
-import com.openull.eastroots92.vacation_homework_android.apis.HomeworkApis;
-import com.openull.eastroots92.vacation_homework_android.models.ChatBalloon;
-import com.openull.eastroots92.vacation_homework_android.models.requests.ChatRequest;
-import com.openull.eastroots92.vacation_homework_android.models.responses.ChatResponse;
+import com.openull.eastroots92.vacation_homework_android.api.HomeworkApis;
+import com.openull.eastroots92.vacation_homework_android.model.ChatBalloon;
+import com.openull.eastroots92.vacation_homework_android.model.requests.ChatRequest;
+import com.openull.eastroots92.vacation_homework_android.model.responses.ChatResponse;
 import com.openull.eastroots92.vacation_homework_android.ui.activity.WriteActivity;
-import com.openull.eastroots92.vacation_homework_android.utils.ApiUtils;
+import com.openull.eastroots92.vacation_homework_android.util.ApiUtils;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
