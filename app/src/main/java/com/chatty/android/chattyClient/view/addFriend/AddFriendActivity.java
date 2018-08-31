@@ -8,12 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chatty.android.chattyClient.R;
+import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.presenter.addFriend.AddFriendPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AddFriendActivity extends AppCompatActivity {
+public class AddFriendActivity extends AppCompatActivity implements ExtendedView<AddFriendProps> {
   private static String HEADER_TITLE = "Add Friend";
   AddFriendPresenter presenter;
 
@@ -81,4 +82,13 @@ public class AddFriendActivity extends AppCompatActivity {
     });
   }
 
+  @Override
+  public void initialRender(AddFriendProps p) {
+
+  }
+
+  @Override
+  public void update(AddFriendProps p) {
+
+  }
 }
