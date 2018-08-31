@@ -1,10 +1,11 @@
 package com.chatty.android.chattyClient.presenter.addFriend;
 
+import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedPresenter;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.module.StateManagerWrapper;
 import com.chatty.android.chattyClient.view.addFriend.AddFriendActivity;
 
-public class AddFriendPresenter {
+public class AddFriendPresenter implements ExtendedPresenter<State> {
   AddFriendActivity view;
 
   public AddFriendPresenter(AddFriendActivity addFriendActivity) {
@@ -17,10 +18,11 @@ public class AddFriendPresenter {
     presenterDidMount();
   }
 
-  private void presenterDidMount() {
+  @Override
+  public void presenterDidMount() {
   }
 
-  private Object stateListener(State state) {
+  public Object stateListener(State state) {
     return null;
   }
 }
