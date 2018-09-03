@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.module.ImagePicker;
@@ -91,7 +92,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void profileImageButtonAction() {
-    setPermission();
+    this.setPermission();
   }
 
   private void renderHeader() {
@@ -143,15 +144,15 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @Override
   public void initImagePicker() {
     TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(getApplicationContext())
-      .setOnImageSelectedListener(new TedBottomPicker.OnImageSelectedListener() {
-        @Override
-        public void onImageSelected(Uri uri) {
-          selectImage(uri);
-        }
-      }).create();
+      .setOnImageSelectedListener(uri ->
+        presenter.selectImage(uri)
+      ).create();
   tedBottomPicker.show(getSupportFragmentManager());
   }
 
-  private void selectImage(Uri uri) {
+  public void updateProfile(Uri uri) {
+    Glide.with(getApplicationContext())
+      .load(uri)
+      .into(this.imageViewProfile);
   }
 }
