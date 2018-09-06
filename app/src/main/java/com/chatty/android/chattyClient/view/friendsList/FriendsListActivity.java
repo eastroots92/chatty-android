@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.model.FriendItemEntry;
@@ -32,6 +33,18 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   @BindView(R.id.recyclerView_profile_list)
   public RecyclerView recyclerViewProfileList;
+
+  @BindView(R.id.imageView_profile_now)
+  public ImageView imageViewProfileNow;
+
+  @BindView(R.id.textView_profile_name_now)
+  public TextView textViewProfileNameNow;
+
+  @BindView(R.id.textView_profile_bio_now)
+  public TextView textViewProfileBioNow;
+
+  @BindView(R.id.textView_profile_date_now)
+  public TextView textViewProfileDateNow;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +94,21 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   @Override
   public void update(FriendsListProps p) {
+    FriendItemEntry friendItem = p.friendsList.get(p.friendsList.size() -1);
     this.renderProfileList(p);
+    this.renderProfileNow(friendItem);
   }
 
+  private void renderProfileNow(FriendItemEntry _friendItem) {
+    FriendItemEntry friendItem = _friendItem;
+
+    textViewProfileNameNow.setText(friendItem.getName());
+    textViewProfileBioNow.setText(friendItem.getBio());
+    textViewProfileDateNow.setText(friendItem.getCreated_at());
+    String imageUrl = "http://13.125.168.50:1432/" + friendItem.getProfile_image();
+    Glide.with(getApplicationContext())
+      .load(imageUrl)
+      .into(this.imageViewProfileNow);
+  }
 
 }
