@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,8 +65,8 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   }
 
-  private void renderProfileList(FriendsListProps p) {
-    List<FriendItemEntry> friendsList = p.friendsList;
+  private void renderProfileList(List<FriendItemEntry> _friendsList) {
+    List<FriendItemEntry> friendsList = _friendsList;
     recyclerViewProfileList.setLayoutManager(new LinearLayoutManager(this));
     friendsListRecyclerViewAdapter = new FriendsListRecyclerViewAdapter(friendsList, getApplicationContext());
     recyclerViewProfileList.setAdapter(friendsListRecyclerViewAdapter);
@@ -94,18 +95,21 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   @Override
   public void update(FriendsListProps p) {
-    FriendItemEntry friendItem = p.friendsList.get(p.friendsList.size() -1);
-    this.renderProfileList(p);
-    this.renderProfileNow(friendItem);
+    List<FriendItemEntry> friendsList = p.friendsList;
+    this.renderProfileList(friendsList);
+    if (friendsList.size() > 0 ) {
+      FriendItemEntry friendItemEntry = p.friendsList.get(0);
+      renderProfileNow(friendItemEntry);
+    }
   }
 
-  private void renderProfileNow(FriendItemEntry _friendItem) {
+  public void renderProfileNow(FriendItemEntry _friendItem) {
     FriendItemEntry friendItem = _friendItem;
 
     textViewProfileNameNow.setText(friendItem.getName());
     textViewProfileBioNow.setText(friendItem.getBio());
     textViewProfileDateNow.setText(friendItem.getCreated_at());
-    String imageUrl = "http://13.125.168.50:1432/" + friendItem.getProfile_image();
+    String imageUrl = "http://13.125.168.50:1432" + friendItem.getProfile_image();
     Glide.with(getApplicationContext())
       .load(imageUrl)
       .into(this.imageViewProfileNow);

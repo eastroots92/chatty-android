@@ -49,6 +49,6 @@ public interface ChattyApiDefinition {
     MultipartBody.Part profile_image
   );
 
-  @GET("/partners/")
+  @GET("/chatty_users/partners/")
   Call<FriendItemResponse> getFriendsList();
 }
