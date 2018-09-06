@@ -54,7 +54,7 @@ public class Reducers {
       case ActionType.REQUEST_GET_FRIENDS_LIST_SUCCESS:
         FriendItemResponse friendItemResponse = (FriendItemResponse) action.getPayload().get("friendsList");
         List<FriendItemEntry> friendItemEntries = friendItemResponse
-          .friendItems
+          .partners
           .stream()
           .map((friendItem) -> {
             FriendItemEntry entry = new FriendItemEntry(

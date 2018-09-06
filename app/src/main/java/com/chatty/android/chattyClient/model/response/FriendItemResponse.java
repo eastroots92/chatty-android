@@ -3,13 +3,13 @@ package com.chatty.android.chattyClient.model.response;
 import java.util.List;
 
 public class FriendItemResponse {
-  public List<FriendItem> friendItems;
+  public List<Partner> partners;
 
-  public List<FriendItem> getFriendItems() {
-    return friendItems;
+  public List<Partner> getFriendItems() {
+    return partners;
   }
 
-  public class FriendItem {
+  public class Partner {
     public String profile_image;
     public String name;
     public String bio;
