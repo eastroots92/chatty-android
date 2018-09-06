@@ -10,9 +10,9 @@ public class FriendItemResponse {
   }
 
   public class FriendItem {
-    String profile_image;
-    String name;
-    String bio;
-    String created_at;
+    public String profile_image;
+    public String name;
+    public String bio;
+    public String created_at;
   }
 }

@@ -3,6 +3,7 @@ package com.chatty.android.chattyClient.presenter.friendsList;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedPresenter;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.module.StateManagerWrapper;
+import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.chatty.android.chattyClient.view.friendsList.FriendsListActivity;
 
 public class FriendsListPresenter implements ExtendedPresenter<State> {
@@ -14,6 +15,15 @@ public class FriendsListPresenter implements ExtendedPresenter<State> {
   public void construct() {
     StateManagerWrapper.subscribe(this::stateListener);
     view.render();
+    this.presenterDidMount();
+  }
+
+  public void presenterDidMount() {
+    try {
+      StateManagerWrapper.dispatch(PartnerAction.requestGetFriendsList());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override

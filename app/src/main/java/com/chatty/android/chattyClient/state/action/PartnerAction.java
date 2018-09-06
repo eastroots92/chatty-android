@@ -82,7 +82,7 @@ public class PartnerAction {
           public void onResponse(Call<FriendItemResponse> call, Response<FriendItemResponse> response) {
             FriendItemResponse friendItemResponse = response.body();
             dispatch.run(Action.of(ActionType.REQUEST_GET_FRIENDS_LIST_SUCCESS)
-              .payloadAdd("partnerProfileDetail", friendItemResponse));
+              .payloadAdd("friendsList", friendItemResponse));
           }
 
           @Override
