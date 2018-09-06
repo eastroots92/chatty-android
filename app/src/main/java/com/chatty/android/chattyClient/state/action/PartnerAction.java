@@ -1,5 +1,7 @@
 package com.chatty.android.chattyClient.state.action;
 
+import android.util.Log;
+
 import com.chatty.android.chattyClient.api.ChattyApi;
 import com.chatty.android.chattyClient.constants.ActionType;
 import com.chatty.android.chattyClient.externalModules.StateManager.Action;
@@ -87,7 +89,10 @@ public class PartnerAction {
 
           @Override
           public void onFailure(Call<FriendItemResponse> call, Throwable t) {
-            dispatch.run(Action.of(ActionType.REQUEST_GET_FRIENDS_LIST_ERROR));
+            dispatch.run(Action.of(ActionType.REQUEST_GET_FRIENDS_LIST_ERROR)
+            .payloadAdd("error",t));
+
+            Log.e("ERROR", String.valueOf(t));
           }
         });
     };

@@ -48,15 +48,14 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   public void render() {
     this.renderHeader();
-    this.renderProfileList();
+
   }
 
-  private void renderProfileList() {
-//    TODO: 서버 통신을 통해 List<FriendItemEntry>를 받아온다.
-//    List<FriendItemEntry> dummy = new ArrayList<>();
-//    recyclerViewProfileList.setLayoutManager(new LinearLayoutManager(this));
-//    friendsListRecyclerViewAdapter = new FriendsListRecyclerViewAdapter(dummy, getApplicationContext());
-//    recyclerViewProfileList.setAdapter(friendsListRecyclerViewAdapter);
+  private void renderProfileList(FriendsListProps p) {
+    List<FriendItemEntry> friendsList = p.friendsList;
+    recyclerViewProfileList.setLayoutManager(new LinearLayoutManager(this));
+    friendsListRecyclerViewAdapter = new FriendsListRecyclerViewAdapter(friendsList, getApplicationContext());
+    recyclerViewProfileList.setAdapter(friendsListRecyclerViewAdapter);
   }
 
   private void renderHeader() {
@@ -82,7 +81,8 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   @Override
   public void update(FriendsListProps p) {
-
+    this.renderProfileList(p);
   }
+
 
 }

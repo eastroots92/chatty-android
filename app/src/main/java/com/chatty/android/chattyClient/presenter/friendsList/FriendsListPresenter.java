@@ -5,6 +5,7 @@ import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.module.StateManagerWrapper;
 import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.chatty.android.chattyClient.view.friendsList.FriendsListActivity;
+import com.chatty.android.chattyClient.view.friendsList.FriendsListProps;
 
 public class FriendsListPresenter implements ExtendedPresenter<State> {
   private FriendsListActivity view;
@@ -28,6 +29,14 @@ public class FriendsListPresenter implements ExtendedPresenter<State> {
 
   @Override
   public Object stateListener(State state) {
+    StateManagerWrapper.log(this.getClass().getSimpleName(), state);
+
+    FriendsListProps props = new FriendsListProps();
+    props.friendsList = state.getFriends();
+
+    this.view.update(
+      props
+    );
     return null;
   }
 }
