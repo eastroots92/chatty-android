@@ -1,6 +1,7 @@
 package com.chatty.android.chattyClient.view.friendsList;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import com.chatty.android.chattyClient.model.FriendItemEntry;
 import com.chatty.android.chattyClient.presenter.addFriend.AddFriendPresenter;
 import com.chatty.android.chattyClient.presenter.friendsList.FriendsListPresenter;
 import com.chatty.android.chattyClient.presenter.friendsList.FriendsListRecyclerViewAdapter;
+import com.chatty.android.chattyClient.view.addFriend.AddFriendActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,9 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
   @BindView(R.id.textView_profile_date_now)
   public TextView textViewProfileDateNow;
 
+  @BindView(R.id.floatingActionButton_app_profile)
+  public FloatingActionButton floatingActionButtonAddProfile;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -75,6 +80,13 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
   private void renderHeader() {
     this.setHeaderTitle();
     this.renderBackButton();
+    this.renderAddButton();
+  }
+
+  private void renderAddButton() {
+    this.floatingActionButtonAddProfile.setOnClickListener((__) -> {
+      startActivity(new Intent(this, AddFriendActivity.class));
+    });
   }
 
   private void setHeaderTitle() {
