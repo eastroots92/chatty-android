@@ -92,8 +92,9 @@ public class FriendsSettingActivity extends AppCompatActivity {
   }
 
   private void renderListButton() {
+    this.imageButtonList.setImageResource(R.drawable.ic_icon_setting_friendslist);
     this.imageButtonList.setOnClickListener((__) -> {
-      new Intent(this, FriendsListActivity.class);
+      this.startActivity(new Intent(this, FriendsListActivity.class));
     });
   }
 
