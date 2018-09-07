@@ -3,6 +3,7 @@ package com.chatty.android.chattyClient.view.addFriend;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.chatty.android.chattyClient.App;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.module.ImagePicker;
@@ -86,7 +88,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
 
     this.buttonAddProfile.setOnClickListener(
       p.handleClickButtonAddProfile.apply(() -> {
-        if(isSubmitReady) {
+        if (isSubmitReady) {
           this.sendProfileAction();
         }
       }));
@@ -114,7 +116,12 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void sendProfileAction() {
-
+    Log.e("ddddddd", "dddddfdfdfd");
+    SharedPreferences userPreference = getSharedPreferences(App.USER_DATA, MODE_PRIVATE);
+    SharedPreferences.Editor editor = userPreference.edit();
+    editor.putBoolean(App.HAS_FRIEND, true);
+    editor.commit();
+    finish();
   }
 
   private void profileImageButtonAction() {
@@ -125,15 +132,6 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @Override
   public void update(AddFriendActivityProps p) {
 
-  }
-
-  public void activateSubmitButton(boolean isSubmitReady) {
-    this.isSubmitReady = isSubmitReady;
-    if(this.isSubmitReady) {
-      buttonAddProfile.setBackgroundResource(R.color.main_purple);
-    } else {
-      buttonAddProfile.setBackgroundResource(R.color.gray5);
-    }
   }
 
   @Override

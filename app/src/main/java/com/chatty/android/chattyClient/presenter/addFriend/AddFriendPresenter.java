@@ -37,6 +37,10 @@ public class AddFriendPresenter implements ExtendedPresenter<State> {
     addFriendActivity.initialRender(props);
   }
 
+  private View.OnClickListener handleClickButtonAddProfile(Runnable r) {
+    return (v) -> r.run();
+  }
+
   public Object stateListener(State state) {
     return null;
   }
