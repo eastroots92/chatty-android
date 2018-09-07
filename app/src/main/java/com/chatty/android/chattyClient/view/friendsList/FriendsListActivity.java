@@ -99,11 +99,11 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
     this.renderProfileList(friendsList);
     if (friendsList.size() > 0 ) {
       FriendItemEntry friendItemEntry = p.friendsList.get(0);
-      renderProfileNow(friendItemEntry);
+      this.renderProfileNow(friendItemEntry);
     }
   }
 
-  public void renderProfileNow(FriendItemEntry _friendItem) {
+  private void renderProfileNow(FriendItemEntry _friendItem) {
     FriendItemEntry friendItem = _friendItem;
 
     textViewProfileNameNow.setText(friendItem.getName());
