@@ -3,6 +3,7 @@ package com.chatty.android.chattyClient.view.friendsSetting;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -111,8 +112,11 @@ public class FriendsSettingActivity extends AppCompatActivity {
     this.textViewProfileDuring.setText(String.valueOf(currentPartnerProfileDetail.getDaysTogether()));
     this.textViewProfileStartDate.setText(currentPartnerProfileDetail.getCreateDate());
 
-    Glide.with(getApplicationContext())
-      .load(profileImage)
-      .into(this.imageViewProfileImage);
+    if (!TextUtils.isEmpty(profileImage)) {
+      String imageUrl = "http://13.125.168.50:1432" + profileImage;
+      Glide.with(getApplicationContext())
+        .load(imageUrl)
+        .into(this.imageViewProfileImage);
+    }
   }
 }

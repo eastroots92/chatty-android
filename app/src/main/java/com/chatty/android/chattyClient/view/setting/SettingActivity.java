@@ -118,7 +118,7 @@ public class SettingActivity extends AppCompatActivity {
   private void startFriendsSettingActivity() {
     boolean hasFriend = getSharedPreferences(App.USER_DATA, MODE_PRIVATE).getBoolean(App.HAS_FRIEND, false);
 
-    if (hasFriend) {
+    if (true) {
       this.startActivity(new Intent(this, FriendsSettingActivity.class));
     } else {
       this.startActivity(new Intent(this, AddFriendActivity.class));
