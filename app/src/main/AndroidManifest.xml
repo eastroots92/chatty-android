@@ -49,8 +49,7 @@
       android:name=".view.write.emotion.EmotionActivity"
       android:theme="@android:style/Theme.Dialog">
     </activity>
-
-
+    <activity android:name=".view.splash.SplashActivity"></activity>
   </application>
 
 </manifest>
