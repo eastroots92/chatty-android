@@ -32,14 +32,14 @@
     app:layout_constraintTop_toTopOf="@id/imageView_timeline"/>
   <TextView
     android:id="@+id/textView_contents"
-    android:maxLines="3"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/size_8dp"
     android:layout_width="@dimen/match_constraint"
+    android:maxLines="3"
     android:text="@string/DUMMY_TEXT"
     android:textColor="@color/black0"
-    android:textSize="@dimen/text_size_12sp"
     android:textStyle="normal"
+    android:textSize="@dimen/text_size_12sp"
     app:layout_constraintStart_toStartOf="@+id/textView_timeline_date"
     app:layout_constraintTop_toBottomOf="@+id/textView_timeline_date"/>
 </android.support.constraint.ConstraintLayout>
