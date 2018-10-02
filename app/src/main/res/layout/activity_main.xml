@@ -67,12 +67,12 @@
   <android.support.design.widget.FloatingActionButton
     android:id="@+id/btn_start_chatting"
     android:backgroundTint="@color/main_purple"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/SIZE_56"
+    android:layout_height="@dimen/SIZE_56"
     android:src="@drawable/ic_icon_write"
     android:layout_marginBottom="@dimen/SIZE_20"
     android:layout_marginEnd="@dimen/SIZE_20"
-    app:fabSize="normal"
+    android:scaleType="fitXY"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
 </android.support.constraint.ConstraintLayout>
