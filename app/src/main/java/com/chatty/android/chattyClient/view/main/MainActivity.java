@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements ExtendedView<Main
 
     StartfloatingBtn();
 
-    ProfileAvatarImage.CUSTOMVIEW__initRender(this.profilerAvatarImage);
+//    ProfileAvatarImage.CUSTOMVIEW__initRender(this.profilerAvatarImage);
 
     this.calenderButton.setOnClickListener((view) -> {
       Intent intent = new Intent(this, CalendarActivity.class);
