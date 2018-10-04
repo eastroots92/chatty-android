@@ -37,7 +37,6 @@ public class AddFriendPresenter extends ExtendedPresenter<AddFriendActivityProps
   }
 
   private View.OnClickListener handleClickImageViewProfile(Runnable r) {
-    Log.v("동작", "동작완료");
     return (v) -> r.run();
   }
 

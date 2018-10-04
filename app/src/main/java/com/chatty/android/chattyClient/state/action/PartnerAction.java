@@ -12,6 +12,7 @@ import com.chatty.android.chattyClient.model.response.FriendItemResponse;
 import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,21 +41,24 @@ public class PartnerAction {
     };
   }
 
-  public static boolean requestAddNewPartnerProfile(NewPartnerRequest newPartnerRequest, MultipartBody.Part file) {
-    final boolean[] isSuccess = {false};
-    ChattyApi.getApi().postNewPartner(newPartnerRequest, file)
-      .enqueue(new Callback<ChatResponse>() {
-        @Override
-        public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
-          isSuccess[0] = true;
-        }
+  public static ReduxJava.DispatcherMiddleware requestAddNewPartnerProfile(
+    RequestBody name,
+    RequestBody bio,
+    MultipartBody.Part file) {
+    return(dispatch) -> {
+      ChattyApi.getApi().postNewPartner(name, bio, file)
+        .enqueue(new Callback<ChatResponse>() {
+          @Override
+          public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+            Log.e("통신 성공", "통신 성공!!!");
+          }
 
-        @Override
-        public void onFailure(Call<ChatResponse> call, Throwable t) {
-
-        }
-      });
-    return isSuccess[0];
+          @Override
+          public void onFailure(Call<ChatResponse> call, Throwable t) {
+            Log.e("통신 성공", String.valueOf(t));
+          }
+        });
+    };
   }
 
   private static PartnerProfileDetailResponse getDummyProfileDetail() {

@@ -21,17 +21,24 @@ import com.chatty.android.chattyClient.App;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.Props;
+import com.chatty.android.chattyClient.model.request.NewPartnerRequest;
 import com.chatty.android.chattyClient.module.ImagePicker;
 import com.chatty.android.chattyClient.presenter.Contract;
 import com.chatty.android.chattyClient.presenter.addFriend.AddFriendPresenter;
+import com.chatty.android.chattyClient.state.Store;
+import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import gun0912.tedbottompicker.TedBottomPicker;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class AddFriendActivity extends AppCompatActivity implements ExtendedView<AddFriendActivityProps>, ImagePicker {
   private static String HEADER_TITLE = "Add Friend";
@@ -87,6 +94,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
 
     this.buttonAddProfile.setOnClickListener(
       p.handleClickButtonAddProfile.apply(() -> {
+        Log.v("동작", "동작완료22");
         if (isSubmitReady) {
           this.sendProfileAction();
         }
@@ -119,12 +127,32 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void sendProfileAction() {
-    Log.e("ddddddd", "dddddfdfdfd");
+    saveServerData();
+    saveUserLocalData();
+    finish();
+  }
+
+  private void saveServerData() {
+    String name = editTextProfileName.getText().toString();
+    String bio = editTextProfileBio.getText().toString();
+    File image = new File (imageUri.getPath());
+    RequestBody mbImage = RequestBody.create(MediaType.parse("image/*"), image);
+    MultipartBody.Part requestImage = MultipartBody.Part.createFormData("file", image.getName(), mbImage);
+    RequestBody requestName = RequestBody.create(MediaType.parse("text/plain"), name);
+    RequestBody requestBio = RequestBody.create(MediaType.parse("text/plain"), bio + "");
+
+    Store.dispatch(PartnerAction.requestAddNewPartnerProfile(
+      requestName,
+      requestBio,
+      requestImage
+    ));
+  }
+
+  private void saveUserLocalData() {
     SharedPreferences userPreference = getSharedPreferences(App.USER_DATA, MODE_PRIVATE);
     SharedPreferences.Editor editor = userPreference.edit();
     editor.putBoolean(App.HAS_FRIEND, true);
     editor.commit();
-    finish();
   }
 
   private void profileImageButtonAction() {
