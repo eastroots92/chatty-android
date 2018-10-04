@@ -52,6 +52,9 @@ public interface ChattyApiDefinition {
     @Path("partner_id") int partner_id
   );
 
+  @GET("/partners/mypartner/")
+  Call<PartnerProfileDetailResponse> getMyPartnerProfile();
+
   @Multipart
   @POST("/partners/partner/")
   Call<ChatResponse> postNewPartner(
