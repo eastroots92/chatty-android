@@ -37,6 +37,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   private static String HEADER_TITLE = "Add Friend";
   private Uri imageUri;
   private boolean hasName = false;
+  private boolean hasProfile = false;
   private boolean isSubmitReady = false;
 
   @BindView(R.id.button_timeline_left)
@@ -170,6 +171,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   public void updateProfile(Uri uri) {
+    this.hasProfile = true;
     this.imageUri = uri;
     Glide.with(getApplicationContext())
       .load(this.imageUri)
@@ -178,8 +180,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void updateSubmitButton() {
-    boolean hasImage = TextUtils.isEmpty(String.valueOf(this.imageUri));
-    if (!hasImage && hasName) {
+    if (hasProfile && hasName) {
       isSubmitReady = true;
       buttonAddProfile.setBackgroundResource(R.color.main_purple);
     } else {
