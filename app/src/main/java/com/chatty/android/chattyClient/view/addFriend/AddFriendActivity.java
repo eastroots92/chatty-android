@@ -65,6 +65,8 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @BindView(R.id.editText_profile_bio)
   public EditText editTextProfileBio;
 
+  private AddFriendActivityProps props;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -76,25 +78,25 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
     this.setContentView(R.layout.activity_add_friend);
     ButterKnife.bind(this);
 
+    this.props = p;
     TextView textView = findViewById(R.id.textView_timeline_title);
     textView.setText(HEADER_TITLE);
 
     this.imageButtonBack.setOnClickListener(
-      p.handleClickImageButtonBack.apply(this::finish));
+      this.props.handleClickImageButtonBack.apply(this::finish));
 
     this.imageViewProfile.setOnClickListener(
-      p.handleClickImageViewProfile.apply(() -> {
+      this.props.handleClickImageViewProfile.apply(() -> {
         this.profileImageButtonAction();
       }));
 
     this.imageViewAddProfileButton.setOnClickListener(
-      p.handleClickImageViewProfile.apply(() -> {
+      this.props.handleClickImageViewProfile.apply(() -> {
         this.profileImageButtonAction();
       }));
 
     this.buttonAddProfile.setOnClickListener(
-      p.handleClickButtonAddProfile.apply(() -> {
-        Log.v("동작", "동작완료22");
+      this.props.handleClickButtonAddProfile.apply(() -> {
         if (isSubmitReady) {
           this.sendProfileAction();
         }
@@ -122,24 +124,26 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   @Override
-  public void update(AddFriendActivityProps addFriendActivityProps) {
-
+  public void update(AddFriendActivityProps props) {
+    if (props.isAddFriend) {
+      finish();
+    }
   }
 
   private void sendProfileAction() {
-    saveServerData();
-    saveUserLocalData();
+    this.setFriendData();
+    this.saveUserLocalData();
     finish();
   }
 
-  private void saveServerData() {
-    String name = editTextProfileName.getText().toString();
-    String bio = editTextProfileBio.getText().toString();
-    File image = new File (imageUri.getPath());
-    RequestBody mbImage = RequestBody.create(MediaType.parse("image/*"), image);
-    MultipartBody.Part requestImage = MultipartBody.Part.createFormData("file", image.getName(), mbImage);
-    RequestBody requestName = RequestBody.create(MediaType.parse("text/plain"), name);
-    RequestBody requestBio = RequestBody.create(MediaType.parse("text/plain"), bio + "");
+  private void setFriendData() {
+    this.props.friendName = editTextProfileName.getText().toString();
+    this.props.friendBio = editTextProfileBio.getText().toString();
+    this.props.friendImage = new File (imageUri.getPath());
+    RequestBody currentImage = RequestBody.create(MediaType.parse("multipart/form-data"), this.props.friendImage);
+    MultipartBody.Part requestImage = MultipartBody.Part.createFormData("file", this.props.friendImage.getName(), currentImage);
+    RequestBody requestName = RequestBody.create(MediaType.parse("text/plain"), this.props.friendName);
+    RequestBody requestBio = RequestBody.create(MediaType.parse("text/plain"), this.props.friendBio + "");
 
     Store.dispatch(PartnerAction.requestAddNewPartnerProfile(
       requestName,

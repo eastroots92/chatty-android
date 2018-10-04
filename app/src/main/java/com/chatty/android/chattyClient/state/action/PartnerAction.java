@@ -46,16 +46,23 @@ public class PartnerAction {
     RequestBody bio,
     MultipartBody.Part file) {
     return(dispatch) -> {
+      dispatch.run(Action.of(ActionType.REQUEST_ADD_FRIEND));
       ChattyApi.getApi().postNewPartner(name, bio, file)
         .enqueue(new Callback<ChatResponse>() {
           @Override
-          public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+          public void onResponse(
+            Call<ChatResponse> call,
+            Response<ChatResponse> response
+          ) {
             Log.e("통신 성공", "통신 성공!!!");
+            dispatch.run(Action.of(ActionType.REQUEST_ADD_FRIEND_SUCCESS)
+              .payloadAdd("addFriend",true));
           }
 
           @Override
           public void onFailure(Call<ChatResponse> call, Throwable t) {
-            Log.e("통신 성공", String.valueOf(t));
+            Log.e("통신 실패", String.valueOf(t));
+            dispatch.run(Action.of(ActionType.REQUEST_ADD_FRIEND_ERROR));
           }
         });
     };

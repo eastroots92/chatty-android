@@ -40,6 +40,11 @@ public class FriendReducer implements Reducer<State.Friend> {
         ArrayList<FriendItemEntry> friends = makeFriendList(friendItemResponse.getFriendItems());
         friend.friends = friends;
         return friend;
+
+      case ActionType.REQUEST_ADD_FRIEND_SUCCESS:
+        boolean isAddFriend = (boolean) action.getPayload().get("addFriend");
+        friend.isAddFriend = isAddFriend;
+        return friend;
       default:
         return friend;
     }
