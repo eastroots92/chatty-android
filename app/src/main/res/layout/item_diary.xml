@@ -43,7 +43,7 @@
     android:textColor="@color/black0"
     android:textSize="@dimen/text_size_14sp"
     android:textStyle="normal"
-    app:layout_constraintBottom_toStartOf="@+id/imageView_diary_image"
+    app:layout_constraintBottom_toTopOf="@+id/imageView_diary_image"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView_question"

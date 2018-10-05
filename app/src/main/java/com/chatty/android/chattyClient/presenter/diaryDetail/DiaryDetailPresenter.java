@@ -18,6 +18,7 @@ public class DiaryDetailPresenter
   @Override
   public DiaryDetailActivityProps initiate() {
     int diaryId = this.activity.getIntent().getIntExtra("diaryId", 0);
+    Log.e("IDID", String.valueOf(diaryId));
     try {
       Store.dispatch(
         DiaryAction.requestGetDiaryDetail(diaryId)
@@ -28,6 +29,7 @@ public class DiaryDetailPresenter
 
     DiaryDetailActivityProps props = new DiaryDetailActivityProps();
     props.diaries = Store.getState().diary.diaries;
+    props.partner = Store.getState().friend.partner;
     return props;
   }
 
@@ -36,6 +38,7 @@ public class DiaryDetailPresenter
 
     DiaryDetailActivityProps props = new DiaryDetailActivityProps();
     props.diaries = state.diary.diaries;
+    props.partner = state.friend.partner;
     return props;
   }
 }

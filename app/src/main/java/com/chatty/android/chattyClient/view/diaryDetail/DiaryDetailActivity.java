@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.Props;
@@ -73,11 +76,20 @@ public class  DiaryDetailActivity extends AppCompatActivity implements ExtendedV
     this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
     this.diaryAdapter = new DiaryAdapter(this, this.props.diaries);
     this.recyclerView.setAdapter(diaryAdapter);
+    this.name.setText(this.props.partner.name);
 
     viewBackButton();
     textView.setText(DIARY_TITLE);
 
     deleteButton.setImageResource(R.drawable.ic_icon_delete);
+
+    Log.e("dd",this.props.partner.imageUrl);
+    if (!TextUtils.isEmpty(this.props.partner.imageUrl)) {
+      String imageUrl = "http://13.125.168.50:1432" + this.props.partner.imageUrl;
+      Glide.with(getApplicationContext())
+        .load(imageUrl)
+        .into(this.profileAvatarImg);
+    }
 
     this.profileAvatarImg.setBackground(new ShapeDrawable(new OvalShape()));
     this.profileAvatarImg.setClipToOutline(true);
