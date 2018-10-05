@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.model.Diary;
 import com.chatty.android.chattyClient.model.State;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
 
   @Override
   public void onBindViewHolder(@NonNull DiaryHolder holder, int position) {
+    setFadeAnimation(holder.itemView, position);
     Diary diary = this.data.get(position);
 
     holder.question.setText(diary.getQuestion());
@@ -61,6 +64,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
         .into(holder.imageAnswer);
       holder.imageAnswer.setVisibility(View.VISIBLE);
     }
+  }
+
+  public void setFadeAnimation(View view, int position) {
+    int posNum = position;
+    int timer = (posNum < 4)? posNum * 200 + 500 : 1000;
+    YoYo.with(Techniques.FadeInUp)
+      .duration(timer)
+      .playOn(view);
   }
 
   @Override
