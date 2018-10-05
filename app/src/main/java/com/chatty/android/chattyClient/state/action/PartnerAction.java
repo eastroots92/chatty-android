@@ -21,7 +21,9 @@ public class PartnerAction {
   public static ReduxJava.DispatcherMiddleware requestGetPartnerProfileDetail() {
     return (dispatch) -> {
       dispatch.run(Action.of(ActionType.REQUEST_GET_PARTNER_PROFILE_DETAIL));
-      ChattyApi.getApi().getPartnerProfileDetail(1)
+//      TODO: 현재 최신 유저만 받아올 수 있게 되어있음. 추후 USERLIST 클릭 시 해당 아이디를 통해서 처리를 해야함
+//      ChattyApi.getApi().getPartnerProfileDetail(1)
+        ChattyApi.getApi().getMyPartnerProfile()
         .enqueue(new Callback<PartnerProfileDetailResponse>() {
           @Override
           public void onResponse(
