@@ -4,11 +4,14 @@ import android.content.Context;
 import android.icu.text.DateFormat;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.model.Diary;
 import com.chatty.android.chattyClient.model.State;
@@ -19,6 +22,7 @@ import java.util.List;
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder> {
   private Context context;
   private ArrayList<Diary> data;
+  private View view;
 
   public DiaryAdapter(Context applicationContext, ArrayList<Diary> diaries) {
     this.context = applicationContext;
@@ -37,7 +41,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
     @NonNull ViewGroup parent,
     int viewType
   ) {
-    View view  = LayoutInflater.from(parent.getContext())
+    this.view  = LayoutInflater.from(parent.getContext())
       .inflate(R.layout.item_diary, parent, false);
 
     return new DiaryHolder(view);
@@ -49,6 +53,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
 
     holder.question.setText(diary.getQuestion());
     holder.answer.setText(diary.getAnswer());
+    String currentImage = diary.getImageUrl() +"";
+    if (!TextUtils.isEmpty(currentImage)) {
+      String imageUrl = "http://13.125.168.50:1432" + currentImage;
+      Glide.with(view)
+        .load(imageUrl)
+        .into(holder.imageAnswer);
+      holder.imageAnswer.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override
@@ -59,11 +71,13 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
   public class DiaryHolder extends RecyclerView.ViewHolder {
     TextView question;
     TextView answer;
+    ImageView imageAnswer;
 
     public DiaryHolder(@NonNull View itemView) {
       super(itemView);
       question = itemView.findViewById(R.id.textView_question);
       answer = itemView.findViewById(R.id.textView_answer);
+      imageAnswer = itemView.findViewById(R.id.imageView_diary_image);
     }
   }
 }

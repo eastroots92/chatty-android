@@ -83,7 +83,6 @@ public class  DiaryDetailActivity extends AppCompatActivity implements ExtendedV
 
     deleteButton.setImageResource(R.drawable.ic_icon_delete);
 
-    Log.e("dd",this.props.partner.imageUrl);
     if (!TextUtils.isEmpty(this.props.partner.imageUrl)) {
       String imageUrl = "http://13.125.168.50:1432" + this.props.partner.imageUrl;
       Glide.with(getApplicationContext())
