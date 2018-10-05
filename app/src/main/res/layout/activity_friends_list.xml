@@ -86,8 +86,9 @@
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerView_profile_list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/match_constraint"
     android:layout_marginTop="@dimen/SIZE_12"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_list"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>

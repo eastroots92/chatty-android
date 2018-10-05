@@ -140,8 +140,8 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
     this.props.friendName = editTextProfileName.getText().toString();
     this.props.friendBio = editTextProfileBio.getText().toString();
     this.props.friendImage = new File (imageUri.getPath());
-    RequestBody currentImage = RequestBody.create(MediaType.parse("multipart/form-data"), this.props.friendImage);
-    MultipartBody.Part requestImage = MultipartBody.Part.createFormData("file", this.props.friendImage.getName(), currentImage);
+    RequestBody currentImage = RequestBody.create(MediaType.parse("multipart/*"), this.props.friendImage);
+    MultipartBody.Part requestImage = MultipartBody.Part.createFormData("profile_image", this.props.friendImage.getName(), currentImage);
     RequestBody requestName = RequestBody.create(MediaType.parse("text/plain"), this.props.friendName);
     RequestBody requestBio = RequestBody.create(MediaType.parse("text/plain"), this.props.friendBio + "");
 
