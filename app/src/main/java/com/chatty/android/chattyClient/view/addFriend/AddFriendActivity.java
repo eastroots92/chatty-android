@@ -3,6 +3,7 @@ package com.chatty.android.chattyClient.view.addFriend;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -126,7 +127,12 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @Override
   public void update(AddFriendActivityProps props) {
     if (props.isAddFriend) {
-      finish();
+      new Handler().postDelayed(new Runnable() {
+        @Override
+        public void run() {
+          finish();
+        }
+      }, 500);
     }
   }
 
