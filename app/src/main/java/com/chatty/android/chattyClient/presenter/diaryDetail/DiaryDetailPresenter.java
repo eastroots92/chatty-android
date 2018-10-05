@@ -1,5 +1,7 @@
 package com.chatty.android.chattyClient.presenter.diaryDetail;
 
+import android.util.Log;
+
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedPresenter;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.externalModules.ReduxJava.ReduxJavaAndroidConnector;
@@ -16,7 +18,6 @@ public class DiaryDetailPresenter
   @Override
   public DiaryDetailActivityProps initiate() {
     int diaryId = this.activity.getIntent().getIntExtra("diaryId", 0);
-    
     try {
       Store.dispatch(
         DiaryAction.requestGetDiaryDetail(diaryId)

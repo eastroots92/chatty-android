@@ -25,7 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DiaryDetailActivity extends AppCompatActivity implements ExtendedView<DiaryDetailActivityProps> {
+public class  DiaryDetailActivity extends AppCompatActivity implements ExtendedView<DiaryDetailActivityProps> {
   private DiaryDetailPresenter presenter;
   private static final String DIARY_TITLE = "Diary";
 
@@ -54,6 +54,8 @@ public class DiaryDetailActivity extends AppCompatActivity implements ExtendedVi
   public RecyclerView recyclerView;
   private DiaryAdapter diaryAdapter;
 
+  private DiaryDetailActivityProps props;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -64,12 +66,12 @@ public class DiaryDetailActivity extends AppCompatActivity implements ExtendedVi
   public void initialRender(DiaryDetailActivityProps props) {
     setContentView(R.layout.item_diary_detail);
     ButterKnife.bind(this);
-
+    this.props = props;
     TextView textView = findViewById(R.id.textView_timeline_title);
     textView.setText(DIARY_TITLE);
 
     this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    this.diaryAdapter = new DiaryAdapter(this, props.diaries);
+    this.diaryAdapter = new DiaryAdapter(this, this.props.diaries);
     this.recyclerView.setAdapter(diaryAdapter);
 
     viewBackButton();

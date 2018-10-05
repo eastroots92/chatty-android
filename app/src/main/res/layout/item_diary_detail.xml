@@ -23,6 +23,7 @@
     layout="@layout/item_diary_detail_header"/>
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerView_diary"
+    android:background="@color/white3"
     android:layout_height="@dimen/match_constraint"
     android:layout_width="@dimen/match_constraint"
     app:layout_constraintBottom_toBottomOf="parent"
